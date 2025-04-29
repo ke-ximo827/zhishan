@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>智膳通—个人注册/登录</title>
+  <link rel="stylesheet" href="css/login.css">
+</head>
+
+<body>
+  <!-- <div class="container">
+    <div class="content">
+      <div class="heart" style="--d:20"></div>
+      <span style="--d:12"></span>
+      <div class="heart" style="--d:12"></div>
+      <span style="--d:9"></span>
+      <div class="heart" style="--d:14"></div>
+      <span style="--d:17"></span>
+      <div class="heart" style="--d:20"></div>
+      <span style="--d:15"></span>
+      <div class="heart" style="--d:16"></div>
+      <span style="--d:8"></span>
+      <div style="--d:9" class="circle"></div>
+      <div class="heart" style="--d:10"></div>
+      <span style="--d:22"></span>
+      <div class="heart" style="--d:8"></div>
+      <span style="--d:11"></span>
+      <div class="heart" style="--d:11"></div>
+      <span style="--d:19"></span>
+      <div style="--d:9" class="circle"></div>
+      <span style="--d:16"></span>
+      <div class="heart" style="--d:15"></div>
+      <span style="--d:14"></span>
+      <div class="heart" style="--d:12"></div>
+      <span style="--d:12"></span>
+      <div class="heart" style="--d:17"></div>
+      <span style="--d:14"></span>
+      <div class="heart" style="--d:9"></div>
+      <span style="--d:13"></span>
+      <div style="--d:10" class="circle"></div>
+      <div class="heart" style="--d:20"></div>
+      <span style="--d:14"></span>
+      <div class="heart" style="--d:12"></div>
+      <span style="--d:15"></span>
+      <div class="heart" style="--d:19"></div>
+      <span style="--d:22"></span>
+      <div style="--d:18" class="circle"></div>
+      <span style="--d:12"></span>
+      <div class="heart" style="--d:8"></div>
+      <span style="--d:10"></span>
+      <div class="heart" style="--d:11"></div>
+      <span style="--d:8"></span>
+      <div style="--d:11" class="circle"></div>
+      <div class="heart" style="--d:22"></div>
+      <span style="--d:17"></span>
+      <div style="--d:14" class="circle"></div>
+      <span style="--d:6"></span>
+      <div class="heart" style="--d:14"></div>
+      <span style="--d:12"></span>
+      <div class="heart" style="--d:25"></div>
+      <span style="--d:20"></span>
+      <div style="--d:25" class="circle"></div>
+      <div class="heart" style="--d:16"></div>
+    </div>
+  </div> -->
+  <link href='https://fonts.googleapis.com/css?family=Lato:300,400,700' rel='stylesheet' type='text/css'>
+  <div id='stars'></div>
+  <div id='stars2'></div>
+  <div id='stars3'></div>
+  <div class="bottom">
+    <svg width="100%" height="100%" id="svg" xmlns="http://www.w3.org/2000/svg"
+      class="transition duration-300 ease-in-out delay-150">
+      <path
+        d="M 0,400 L 0,75 C 41.103415957577994,53.34499938340116 82.20683191515599,31.68999876680232 136,42 C 189.793168084844,52.31000123319768 256.2760882969541,94.58500431619188 317,109 C 377.7239117030459,123.41499568380812 432.688814897028,109.96998396843014 481,93 C 529.311185102972,76.03001603156986 570.968652114934,55.53505981008756 625,48 C 679.031347885066,40.46494018991244 745.4365766432359,45.889776791219646 804,55 C 862.5634233567641,64.11022320878035 913.2850413121223,76.9058330250339 971,86 C 1028.7149586878777,95.0941669749661 1093.4232581082747,100.48689110864473 1142,90 C 1190.5767418917253,79.51310889135527 1223.0219262547787,53.14660254038722 1270,48 C 1316.9780737452213,42.85339745961278 1378.4890368726105,58.92669872980639 1440,75 L 1440,400 L 0,400 Z"
+        stroke="none" stroke-width="0" fill="#8ed1fc" fill-opacity="0.4"
+        class="transition-all duration-300 ease-in-out delay-150 path-0"></path>
+      <path
+        d="M 0,400 L 0,175 C 58.11246762856085,164.47381921321988 116.2249352571217,153.94763842643974 169,159 C 221.7750647428783,164.05236157356026 269.212726600074,184.68326550746087 315,197 C 360.787273399926,209.31673449253913 404.9241583425823,213.31929954371685 458,211 C 511.0758416574177,208.68070045628315 573.0906400295967,200.03953631767172 637,185 C 700.9093599704033,169.96046368232828 766.7132815390308,148.52255518559625 817,156 C 867.2867184609692,163.47744481440375 902.0562338142802,199.87024293994327 956,200 C 1009.9437661857198,200.12975706005673 1083.0617832038477,163.99647305463066 1139,156 C 1194.9382167961523,148.00352694536934 1233.6966333703292,168.1438648415341 1281,176 C 1328.3033666296708,183.8561351584659 1384.1516833148353,179.42806757923296 1440,175 L 1440,400 L 0,400 Z"
+        stroke="none" stroke-width="0" fill="#8ed1fc" fill-opacity="0.53"
+        class="transition-all duration-300 ease-in-out delay-150 path-1"></path>
+      <path
+        d="M 0,400 L 0,275 C 55.91629054137378,281.472068072512 111.83258108274757,287.94413614502406 166,288 C 220.16741891725243,288.05586385497594 272.58596621038356,281.6955234924158 326,286 C 379.41403378961644,290.3044765075842 433.82355407571833,305.2737698853127 491,311 C 548.1764459242817,316.7262301146873 608.119817486743,313.20939696633366 652,312 C 695.880182513257,310.79060303366634 723.6971759773093,311.8886422493526 775,304 C 826.3028240226907,296.1113577506474 901.09147860402,279.236034036256 955,270 C 1008.90852139598,260.763965963744 1041.93690960661,259.1672216056234 1094,265 C 1146.06309039339,270.8327783943766 1217.1608829695401,284.09507954125047 1278,287 C 1338.8391170304599,289.90492045874953 1389.41955851523,282.45246022937476 1440,275 L 1440,400 L 0,400 Z"
+        stroke="none" stroke-width="0" fill="#8ed1fc" fill-opacity="1"
+        class="transition-all duration-300 ease-in-out delay-150 path-2"></path>
+    </svg>
+  </div>
+  <div class="login">
+    <div class="header">
+      <h2>登录</h2>
+    </div>
+    <!-- 登录模块 -->
+    <section class="main">
+      <div class="switchover">
+        <button class="qiehuan">
+          没有账号，进行注册
+        </button>
+      </div>
+      <form class="user_form" autocomplete="off">
+        <h3>账号</h3>
+        <input type="text" placeholder="user" class="text">
+        <span class="idvf2"></span>
+        <h3>密码</h3>
+        <input type="password" placeholder="password" class="password">
+        <span class="pwvf2"></span>
+        <span class="cbspan2"><input type="checkbox" style="vertical-align: top;" class="checkbox">我已阅读并接受条款</span><br>
+        <a href="chat.html" class="submita">
+          <div class="submit">登录</div>
+        </a>
+      </form>
+    </section>
+  </div>
+  <div class="register">
+    <!-- top标题模块 -->
+    <div class="register_header">
+      <h2>注册</h2>
+    </div>
+    <!-- 注册模块 -->
+    <section class="register_main">
+      <div class="register_switchover">
+        <button class="register_qiehuan">
+          已有帐号，进行登录
+        </button>
+      </div>
+      <form class="register_form" autocomplete="off">
+        <h3>账号</h3>
+        <input type="text" placeholder="user" class="register_text" name="username">
+        <span class="idvf"><i class="iconfont"></i></span>
+        <h3>密码</h3>
+        <input type="password" placeholder="password" class="register_password" name="password">
+        <span class="pwvf"></span>
+        <h3>确认密码</h3>
+        <input type="password" placeholder="password again" class="register_password2">
+        <span class="againpwvf"></span>
+        <h3>手机号</h3>
+        <input type="text" placeholder="phonenumebr" class="register_phone" name="phone">
+        <span class="phonevf"></span>
+        <h3>验证码</h3>
+        <input type="text" placeholder="verification code" class="register_vfcode">
+        <span class="codevf"></span>
+        <img src="" alt="验证码" class="register_img">
+        <span class="register_cbspan"><input type="checkbox" style="vertical-align: top;"
+            class="register_ckbox">我已阅读并接受条款</span><br>
+        <div class="register_submit">注册</div>
+      </form>
+    </section>
+  </div>
+</body>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="js/login.js"></script>
+
+</html>

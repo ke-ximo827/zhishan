@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>智膳通—首页</title>
+
+  <!-- fontawesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+  <!-- stylesheet -->
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+
+  <header>
+    <nav>
+      <a href="https://www.diabetes.com.cn/" class="nav-items active" target="_blank"
+        data-img="imgs/web_photos/1.png">Community</a>
+      <a href="https://diab.cma.org.cn/cn/index.aspx" class="nav-items" target="_blank"
+        data-img="imgs/web_photos/2.png">CDS</a>
+      <a href="https://www.tnblt.com/" class="nav-items" target="_blank" data-img="imgs/web_photos/3.png">Forum</a>
+      <a href="https://www.99.com.cn/tnb/" class="nav-items" target="_blank"
+        data-img="imgs/web_photos/4.png">Knowledge</a>
+      <a href="http://www.cds.org.cn/" class="nav-items" target="_blank" data-img="imgs/web_photos/5.png">Journal</a>
+    </nav>
+    <div class="web_img">
+      <a href="" class="linka"><img id='navPreview' alt="preview"></a>
+    </div>
+  </header>
+
+  <div class="content">
+    <img src="imgs/homepage_bg/7.jpg" alt="background" class="back-3">
+
+    <div class="title">
+      <h3>The Precise Recipe Recommendation Web</h3>
+      <h1>HEALTHY</h1>
+    </div>
+
+    <img src="imgs/homepage_bg/8.png" alt="background" class="back-1">
+    <img src="imgs/homepage_bg/9.png" alt="background" class="back-2">
+
+    <div class="info-wrap">
+      <p>
+        糖尿病是一种慢性疾病。当胰腺不能产生足够的胰岛素或者身体无法有效利用自身产生的胰岛素时，糖尿病就会发生。
+        血糖过高或高血糖是糖尿病未得到控制的常见后果，随着时间的推移，它会对身体的许多系统造成严重损害，尤其是神经系统和血管系统。
+        本网站致力于帮助糖尿病患者实现精准饮食，以维持相对平衡的血糖水平。
+      </p>
+    </div>
+
+
+    <div class="cta">
+      <button onclick="window.location.href='personal.html'">
+        Explore More
+        <i class="fa-solid fa-arrow-right"></i>
+      </button>
+    </div>
+
+    <div class="slider">
+      <button class="slider_btn prev"><i class="fa-solid fa-chevron-left"></i></button>
+      <button class="slider_btn next"><i class="fa-solid fa-chevron-right"></i></button>
+    </div>
+  </div>
+
+  <script>
+    document.querySelectorAll('.nav-items').forEach(link => {
+      const previewImg = document.getElementById('navPreview');
+
+      // 预加载图片
+      const imgCache = new Image();
+      imgCache.src = link.dataset.img;
+
+      link.addEventListener('mouseenter', function () {
+        // 显示容器
+        document.querySelector('.web_img').classList.add('active');
+        // 切换图片
+        previewImg.src = this.dataset.img;
+        // 添加缩放动画
+        previewImg.style.transform = 'scale(1)';
+      });
+
+      link.addEventListener('mouseleave', function () {
+        // 隐藏容器
+        document.querySelector('.web_img').classList.remove('active');
+        // 重置缩放
+        previewImg.style.transform = 'scale(1.05)';
+      });
+      // 更新事件处理
+      link.addEventListener('mouseenter', function () {
+        const container = document.querySelector('.web_img');
+        container.classList.add('loading');
+
+        previewImg.onload = () => {
+          container.classList.remove('loading');
+          container.classList.add('active');
+          previewImg.style.transform = 'scale(1)';
+        };
+
+        previewImg.src = this.dataset.img;
+      });
+    });
+    //轮播图模块
+    let i = 0//信号量控制图像张数
+    //获取右侧按钮
+    const next = document.querySelector(".slider .next")
+    const prev = document.querySelector(".slider .prev")
+    const img1 = document.querySelector(".back-1")
+    const img2 = document.querySelector(".back-2")
+    const img3 = document.querySelector(".back-3")
+    const title = document.querySelector(".title")
+    const p = document.querySelector(".info-wrap p")
+    const div = document.querySelector(".content")
+    const link = document.querySelector(".linka")
+    const slider_img_p = [
+      { img: "imgs/slider_img/1.png", word: "糖尿病病情恶化的6个早期信号，很多人忽视了", src: 'https://www.99.com.cn/tnb/zlcs/800685.htm' },
+      { img: "imgs/slider_img/2.png", word: "糖尿病患者的康复护理原则有哪些", src: "https://www.tnblt.com/forum.php?mod=viewthread&tid=16083" },
+      { img: "imgs/slider_img/3.png", word: "有研究Ⅱ型糖尿病有逆转的方法", src: "https://www.tnblt.com/forum.php?mod=viewthread&tid=16181" }
+    ]
+    function common(i) {
+      img1.classList.add("hidden");
+      img2.classList.add("hidden");
+      title.classList.add("hidden")
+      img3.src = slider_img_p[i].img;
+      p.innerHTML = slider_img_p[i].word;
+      link.href = slider_img_p[i].src;
+    }
+    next.addEventListener("click", function () {
+      i++
+      //到达最后一张则跳转回第一张
+      if (i >= slider_img_p.length) {
+        i = 0
+      }
+      common(i)
+    })
+    prev.addEventListener("click", function () {
+      i--
+      if (i < 0) {
+        i = 3
+      }
+      common(i)
+    })
+    //鼠标进入时停止定时器
+    div.addEventListener("mouseenter", function () {
+      clearInterval(timeId)
+    })
+    div.addEventListener("mouseleave", function () {
+      clearInterval(timeId)
+      timeId = setInterval(function () {
+        next.click()
+      }, 4000)//开启定时器
+    })
+    let timeId = setInterval(function () {
+      next.click()
+    }, 4000)
+  </script>
+
+</body>
+
+
+</html>

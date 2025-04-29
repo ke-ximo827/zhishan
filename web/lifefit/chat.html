@@ -1,0 +1,845 @@
+<!DOCTYPE html>
+<html lang="en" bg-theme="light">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/font-awesome.min.css">
+  <link rel="stylesheet" href="css/github-dark-dimmed.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/newstyle.css">
+  <link rel="stylesheet" href="css/select2-4.0.13.min.css">
+  <link rel="stylesheet" href="css/swiper-bundle.min.css">
+  <link rel="stylesheet" href="css/iconfont.css">
+  <title>智膳通—主页</title>
+  <style>
+    body {
+      background: linear-gradient(-45deg, #d77e62, #f081ac, #35a0c7, #5ccfb4);
+      background-size: 400% 400%;
+      animation: gradient 15s ease infinite;
+      height: 100vh;
+    }
+
+    @keyframes gradient {
+      0% {
+        background-position: 0% 50%;
+      }
+
+      50% {
+        background-position: 100% 50%;
+      }
+
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+
+    /* 内容容器添加半透明背景 */
+    .container {
+      background: rgba(255, 255, 255, 0.92);
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    }
+
+    /* 适配暗色模式 */
+    @media (prefers-color-scheme: dark) {
+      .dynamic-bg {
+        background: linear-gradient(135deg,
+            #2d1a0f 0%,
+            #3a2818 30%,
+            #483624 60%,
+            #554231 100%);
+      }
+
+      .container {
+        background: rgba(40, 35, 30, 0.95);
+      }
+    }
+
+    .ball {
+      position: absolute;
+      border-radius: 100%;
+      opacity: 0.7;
+    }
+
+    img {
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- 一日餐食 -->
+  <div class="swiper-container" style="position: fixed;
+    top: 10px;
+    left: 20px;
+    width: 28%;
+    height: 45%;
+    z-index: 1000;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);">
+    <h3 class="text-center" style="font-weight: 900;color: #f7f770;"><span style="margin-right: 10px;"></span>一日糖友用餐指南
+    </h3>
+    <div class="swiper-wrapper">
+      <div class="swiper-slide">
+        <span>早餐：燕麦蔬菜鸡蛋杯</span>
+        <img src="imgs/daily-food/breakfast.jpg" alt="" class=" swiper-lazy"
+          style="width: 100%; height: 100%; object-fit: cover;">
+      </div>
+      <div class="swiper-slide">
+        <span>午餐：藜麦鸡胸沙拉</span>
+        <img src="imgs/daily-food/lunch.jpg" alt="" class=" swiper-lazy"
+          style="width: 100%; height: 100%; object-fit: cover;">
+      </div>
+      <div class="swiper-slide">
+        <span>晚餐：清蒸鲈鱼配杂粮饭</span>
+        <img src="imgs/daily-food/dinner.jpg" alt="" class="swiper-lazy"
+          style="width: 100%; height: 100%; object-fit: cover;">
+
+      </div>
+    </div>
+
+    <!-- 分页器 -->
+    <div class="swiper-pagination"></div>
+
+    <!-- 导航按钮 -->
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
+
+    <!-- 滚动条 -->
+    <div class="swiper-scrollbar"></div>
+  </div>
+  <!-- 个人主页+进入问答部分 -->
+  <div class="personal_click" style="position: fixed;
+  top: 5%;
+  left: 32.5%;
+  width: 35%;
+  background-color: #fff;
+  height: 90%;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);">
+    <div style="display: flex; align-items: center; justify-content: center;margin-top: 20px;">
+      <img src="imgs/iconfont/special_cook.png" alt="LiftFit"
+        style="width: 30px; height: 30px; vertical-align: middle; margin-right: 5px;">
+      <h3 class="text-center" style="font-weight: 900; margin: 0;margin-left: 10px;">LiftFit</h3>
+    </div>
+    <div class="answer">
+      <div class="tips">
+        <h4 class="text-center" style="color: #000;">您的专属云营养师LifeFit已上线!</h4>
+        <!-- <img src="/static/images/reward.png"> -->
+      </div>
+      <!-- 头像昵称部分 -->
+      <div style="margin-top: 90px;" class="personal_name">
+        <a href="./personal.html">
+          <div class="personal_image" style="cursor: pointer;"></div>
+        </a>
+        <h2 class="text-center" style="margin-top: 5px;margin-bottom: 5px;">小智</h1>
+        </h2>
+      </div>
+      <!-- 主要信息部分 -->
+      <div class="personal_form">
+        <div class="settings-common" data-toggle="distpicker"
+          style="width: 480px; height: 34px; display: flex; align-items: center;">
+          <span style="margin-left: 20px;"><img src="imgs/iconfont/position.png" alt="地区"
+              style="width: 20px; height: 20px; vertical-align: middle;">地区</span>
+          <select class="form-control ipt-common service-provider" id="serviceProvider" data-province="---- 选择省 ----"
+            style="width: 25%;margin-left: 60px;cursor: pointer;">
+          </select>
+          <select class="form-control ipt-common service-provider" id="serviceProvider" data-city="---- 选择市 ----"
+            style="width: 25%;margin-left: 10px;cursor: pointer; ">
+          </select>
+        </div>
+
+        <div class="settings-common"
+          style="width: 480px; height: 34px; display: flex; align-items: center;margin-top: 20px;">
+          <span style="margin-left: 20px;"><img src="imgs/iconfont/taste.png" alt="口味"
+              style="width: 20px;height: 20px;">口味</span>
+          <select class="form-control ipt-common" id="like" aria-placeholder="请选择你的偏好"
+            style="width: 52%;margin-left: 60px;cursor: pointer;">
+            <option value="偏甜" style="color: #000;">偏甜</option>
+            <option value="偏咸" style="color: #000;">偏咸</option>
+            <option value="偏酸" style="color: #000;">偏酸</option>
+            <option value="偏辣" style="color: #000;">偏辣</option>
+            <option value="偏辣" style="color: #000;">偏淡</option>
+          </select>
+        </div>
+
+        <div class="settings-common"
+          style="width: 480px; height: 34px; display: flex; align-items: center;margin-top: 20px;">
+          <span style="margin-left: 20px;"><img src="imgs/iconfont/hate.png" alt="忌口"
+              style="width: 20px;height: 20px;">忌口</span>
+          <input type="text" class="form-control ipt-common api-key" id="apiKey" placeholder="忌口"
+            style="width: 52%;margin-left: 60px;">
+        </div>
+
+        <div class="settings-common"
+          style="width: 480px; height: 34px; display: flex; align-items: center;margin-top: 20px;">
+          <span style="margin-left: 20px;"><img src="imgs/iconfont/money.png" alt="一天餐标"
+              style="width: 20px;height: 20px;">一天的餐标</span>
+          <input type="text" class="form-control ipt-common onehub-token" id="oneHubToken" placeholder="一天的餐标"
+            style="width: 52%;margin-left: 18px;">
+        </div>
+      </div>
+      <!-- 进入问答部分 -->
+      <div class="click_enter" style="position: fixed;bottom: 84px;width: 430px;">
+        <div class="slogan" style="text-align: center;">点此进入个人信息填写->进入智膳通</div>
+        <button id="chatBtn" class="btn btn-primary  enter_web" type="button"
+          style="border-radius: 50px;cursor: pointer;">
+          <a href="https://console.bce.baidu.com/qianfan/ais/console/onlineTest/LLM">
+            <img src="imgs/iconfont/send.png" alt="进入智膳通" style="width: 30px;height: 30px;">
+          </a>
+        </button>
+      </div>
+      <footer class="foot" style="position: fixed;bottom: 35px;text-align: center;width: 430px;">
+        <p style="font-size: 13px;">“做一个真正惠及糖尿病人的平台，做糖尿病人的贴心卫士”</p>
+      </footer>
+    </div>
+  </div>
+  <!-- 菜谱轮播图 -->
+  <div class="swiper" style="position: fixed;
+  bottom: 10px;
+  left: 20px;
+  width: 28%;
+  height: 45%;
+  z-index: 1000;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);">
+    <!-- 添加固定高度 -->
+    <h3 class="text-center" style="font-weight: 900;color: #f7f770;"><span style="margin-right: 10px;"></span>一周糖友菜谱推荐
+    </h3>
+    <div class="swiper-wrapper">
+      <div class="swiper-slide">
+        <a href="https://cn-lndl-ct-01-02.bilivideo.com/upgcxcode/80/29/1193942980/1193942980_nb3-1-16.mp4?e=ig8euxZM2rNcNbRVhwdVhwdlhWdVhwdVhoNvNC8BqJIzNbfq9rVEuxTEnE8L5F6VnEsSTx0vkX8fqJeYTj_lta53NCM=&uipk=5&nbs=1&deadline=1745863309&gen=playurlv2&os=bcache&oi=730790904&trid=000022cc05f1b20b4a7f9386ad9daaaa9a51h&mid=0&platform=html5&og=cos&upsig=304cf86f2f19a8342a5312ce3f1e2dd0&uparams=e,uipk,nbs,deadline,gen,os,oi,trid,mid,platform,og&cdnid=88002&bvc=vod&nettype=0&f=h_0_0&bw=49807&logo=80000000"
+          target="_blank"><img src="imgs/foods_menu/1.webp" alt="" class="swiper-lazy"
+            style="width: 100%; height: 100%; object-fit: cover;"></a>
+      </div>
+      <div class="swiper-slide">
+        <a href="https://cn-jxjj-ct-01-14.bilivideo.com/upgcxcode/58/79/378717958/378717958-1-16.mp4?e=ig8euxZM2rNcNbRVhwdVhwdlhWdVhwdVhoNvNC8BqJIzNbfq9rVEuxTEnE8L5F6VnEsSTx0vkX8fqJeYTj_lta53NCM=&uipk=5&nbs=1&deadline=1745863399&gen=playurlv2&os=bcache&oi=730790904&trid=0000b106659e4b724a0fa7e3d0638f1c8f09h&mid=0&platform=html5&og=hw&upsig=16f4b71b626592c06a2e9bc7935a8aee&uparams=e,uipk,nbs,deadline,gen,os,oi,trid,mid,platform,og&cdnid=9623&bvc=vod&nettype=0&f=h_0_0&bw=53654&logo=80000000"
+          target="_blank"><img src="imgs/foods_menu/2.webp" alt="" class="swiper-lazy"
+            style="width: 100%; height: 100%; object-fit: cover;"></a>
+      </div>
+      <div class="swiper-slide">
+        <a href="https://cn-lndl-ct-01-02.bilivideo.com/upgcxcode/80/29/1193942980/1193942980_nb3-1-16.mp4?e=ig8euxZM2rNcNbRVhwdVhwdlhWdVhwdVhoNvNC8BqJIzNbfq9rVEuxTEnE8L5F6VnEsSTx0vkX8fqJeYTj_lta53NCM=&uipk=5&nbs=1&deadline=1745863309&gen=playurlv2&os=bcache&oi=730790904&trid=000022cc05f1b20b4a7f9386ad9daaaa9a51h&mid=0&platform=html5&og=cos&upsig=304cf86f2f19a8342a5312ce3f1e2dd0&uparams=e,uipk,nbs,deadline,gen,os,oi,trid,mid,platform,og&cdnid=88002&bvc=vod&nettype=0&f=h_0_0&bw=49807&logo=80000000"
+          target="_blank"><img src="imgs/foods_menu/3.webp" alt="" class="swiper-lazy"
+            style="width: 100%; height: 100%; object-fit: cover;"></a>
+      </div>
+      <div class="swiper-slide">
+        <a href="https://cn-scdy-ct-01-28.bilivideo.com/upgcxcode/30/59/212825930/212825930-1-16.mp4?e=ig8euxZM2rNcNbRVhwdVhwdlhWdVhwdVhoNvNC8BqJIzNbfq9rVEuxTEnE8L5F6VnEsSTx0vkX8fqJeYTj_lta53NCM=&uipk=5&nbs=1&deadline=1745863500&gen=playurlv2&os=bcache&oi=730790904&trid=00008a36ef43300b418a93b5bacbe7a5e8e1h&mid=0&platform=html5&og=hw&upsig=88851c6d06a4b5a8381beb2d148922bc&uparams=e,uipk,nbs,deadline,gen,os,oi,trid,mid,platform,og&cdnid=88628&bvc=vod&nettype=0&f=h_0_0&bw=57618&logo=80000000"
+          target="_blank"><img src="imgs/foods_menu/4.webp" alt="" class="swiper-lazy"
+            style="width: 100%; height: 100%; object-fit: cover;"></a>
+      </div>
+      <div class="swiper-slide">
+        <a href="https://cn-lndl-ct-01-02.bilivideo.com/upgcxcode/80/29/1193942980/1193942980_nb3-1-16.mp4?e=ig8euxZM2rNcNbRVhwdVhwdlhWdVhwdVhoNvNC8BqJIzNbfq9rVEuxTEnE8L5F6VnEsSTx0vkX8fqJeYTj_lta53NCM=&uipk=5&nbs=1&deadline=1745863309&gen=playurlv2&os=bcache&oi=730790904&trid=000022cc05f1b20b4a7f9386ad9daaaa9a51h&mid=0&platform=html5&og=cos&upsig=304cf86f2f19a8342a5312ce3f1e2dd0&uparams=e,uipk,nbs,deadline,gen,os,oi,trid,mid,platform,og&cdnid=88002&bvc=vod&nettype=0&f=h_0_0&bw=49807&logo=80000000"
+          target="_blank"><img src="imgs/foods_menu/5.webp" alt="" class="swiper-lazy"
+            style="width: 100%; height: 100%; object-fit: cover;"></a>
+
+      </div>
+      <div class="swiper-slide">
+        <a href="https://cn-lndl-ct-01-02.bilivideo.com/upgcxcode/80/29/1193942980/1193942980_nb3-1-16.mp4?e=ig8euxZM2rNcNbRVhwdVhwdlhWdVhwdVhoNvNC8BqJIzNbfq9rVEuxTEnE8L5F6VnEsSTx0vkX8fqJeYTj_lta53NCM=&uipk=5&nbs=1&deadline=1745863309&gen=playurlv2&os=bcache&oi=730790904&trid=000022cc05f1b20b4a7f9386ad9daaaa9a51h&mid=0&platform=html5&og=cos&upsig=304cf86f2f19a8342a5312ce3f1e2dd0&uparams=e,uipk,nbs,deadline,gen,os,oi,trid,mid,platform,og&cdnid=88002&bvc=vod&nettype=0&f=h_0_0&bw=49807&logo=80000000"
+          target="_blank"><img src="imgs/foods_menu/6.webp" alt="" class="swiper-lazy"
+            style="width: 100%; height: 100%; object-fit: cover;"></a>
+      </div>
+      <div class="swiper-slide">
+        <a href="https://cn-lndl-ct-01-02.bilivideo.com/upgcxcode/80/29/1193942980/1193942980_nb3-1-16.mp4?e=ig8euxZM2rNcNbRVhwdVhwdlhWdVhwdVhoNvNC8BqJIzNbfq9rVEuxTEnE8L5F6VnEsSTx0vkX8fqJeYTj_lta53NCM=&uipk=5&nbs=1&deadline=1745863309&gen=playurlv2&os=bcache&oi=730790904&trid=000022cc05f1b20b4a7f9386ad9daaaa9a51h&mid=0&platform=html5&og=cos&upsig=304cf86f2f19a8342a5312ce3f1e2dd0&uparams=e,uipk,nbs,deadline,gen,os,oi,trid,mid,platform,og&cdnid=88002&bvc=vod&nettype=0&f=h_0_0&bw=49807&logo=80000000"
+          target="_blank"><img src="imgs/foods_menu/7.webp" alt="" class="swiper-lazy"
+            style="width: 100%; height: 100%; object-fit: cover;"></a>
+      </div>
+    </div>
+  </div>
+  <!-- 蔬菜搜索 -->
+  <div class="search">
+    <input type="text" placeholder="请输入您想查询的蔬菜">
+    <button><img src="imgs/iconfont/search.png" alt="搜索" class="search_button"></button>
+  </div>
+  <!-- 蔬菜轮播图 -->
+  <div class="vegetable-swiper" style="
+  position: fixed;
+  top: 5%;
+  right: 20px;
+  width: 28%;
+  height: 45%;
+  z-index: 1000;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);">
+    <h3 class="text-center" style="font-weight: 900; color: #f7f770; padding: 10px 0;">新鲜蔬菜推荐</h3>
+    <div class="swiper-wrapper">
+      <div class="swiper-slide">
+        <img src="imgs/vegetables slider/bocai.png" alt="菠菜" class="swiper-lazy"
+          style="width: 100%; height: 70%; object-fit: cover; border-radius: 8px;">
+        <p class="text-center mt-2">菠菜</p>
+      </div>
+      <div class="swiper-slide">
+        <img src="imgs/vegetables slider/huanggua.jpg" alt="黄瓜" class="swiper-lazy"
+          style="width: 100%; height: 70%; object-fit: cover; border-radius: 8px;">
+        <p class="text-center mt-2">黄瓜</p>
+      </div>
+      <div class="swiper-slide">
+        <img src="imgs/vegetables slider/luobo.jpg" alt="萝卜" class="swiper-lazy"
+          style="width: 100%; height: 70%; object-fit: cover; border-radius: 8px;">
+        <p class="text-center mt-2">萝卜</p>
+      </div>
+      <div class="swiper-slide">
+        <img src="imgs/vegetables slider/nangua.jpeg" alt="南瓜" class="swiper-lazy"
+          style="width: 100%; height: 70%; object-fit: cover; border-radius: 8px;">
+        <p class="text-center mt-2">南瓜</p>
+      </div>
+      <div class="swiper-slide">
+        <img src="imgs/vegetables slider/ou.jpg" alt="藕" class="swiper-lazy"
+          style="width: 100%; height: 70%; object-fit: cover; border-radius: 8px;">
+        <p class="text-center mt-2">藕</p>
+      </div>
+      <div class="swiper-slide">
+        <img src="imgs/vegetables slider/qincai.jpg" alt="芹菜" class="swiper-lazy"
+          style="width: 100%; height: 70%; object-fit: cover; border-radius: 8px;">
+        <p class="text-center mt-2">芹菜</p>
+      </div>
+      <div class="swiper-slide">
+        <img src="imgs/vegetables slider/yangcong.jpg" alt="洋葱" class="swiper-lazy"
+          style="width: 100%; height: 70%; object-fit: cover; border-radius: 8px;">
+        <p class="text-center mt-2">洋葱</p>
+      </div>
+    </div>
+    <div class="swiper-pagination"></div>
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
+  </div>
+  <!-- 蔬菜详细页 -->
+  <div id="mask" class="vegetable-mask"></div>
+  <div class="vegetable-details">
+    <button class="close-btn">&times;</button>
+    <h2 class="vegetable-title"></h2>
+    <img class="vegetable-img" src="" alt="蔬菜照片">
+    <p class="vegetable-desc">
+      <!-- 将原始文本转换为结构化HTML -->
+    <div class="section-title">概述</div>
+    <p class="summarize"></p>
+
+    <div class="tip-box">
+      <span class="highlight">注意：</span>
+    </div>
+
+    <div class="section-title">对糖尿病作用</div>
+    <ul class="desc-list">
+      <li><span class="highlight"></span></li>
+      <li><span class="highlight"></span></li>
+      <li><span class="highlight"></span></li>
+    </ul>
+
+    <div class="section-title">降血糖搭配</div>
+    <p class="foods">
+    </p>
+
+    <table class="nutrition-table">
+      <tr>
+        <td>每100g热量</td>
+        <td class="heat"></td>
+      </tr>
+      <tr>
+        <td>升糖指数(GI)</td>
+        <td class="GI"></td>
+      </tr>
+      <tr>
+        <td>推荐食用量</td>
+        <td class="quantity"></td>
+      </tr>
+    </table>
+    </p>
+  </div>
+  <!-- GL智能升糖负荷换算器 -->
+  <div class="gl-calculator">
+    <div class="section-title" style="color: #4CAF50;">升糖负荷计算器</div>
+    <div class="calculator-box">
+      <div class="input-group">
+        <input type="text" id="foodsinsert" class="form-control" placeholder="输入所查询的食材" min="0" step="10">
+        <input type="number" id="weightInput" class="form-control" placeholder="输入食材重量(克)" min="0" step="10">
+        <button class="btn btn-calculate" onclick="calculateGL()">
+          <img src="./imgs/iconfont/calculate.png" alt="计算" style="width: 20px;
+          height: 20px;">立即计算
+        </button>
+      </div>
+      <div class="result-box">
+        <div class="result-item">
+          <span>碳水化合物总量：</span>
+          <strong id="carbsTotal">0g</strong>
+        </div>
+        <div class="result-item">
+          <span>升糖负荷(GL)：</span>
+          <strong id="glValue">0</strong>
+        </div>
+        <div class="gl-indicator">
+          <div class="indicator-bar low"></div>
+          <div class="indicator-bar mid"></div>
+          <div class="indicator-bar high"></div>
+          <div class="indicator-pointer"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  <script src="js/jquery-2.1.1.js"></script>
+  <script src="js/swiper-bundle.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/highlight.min.js"></script>
+  <script src="js/distpicker.js"></script>
+  <script src="js/marked.min.js"></script>
+  <script src="js/html2canvas.min.js"></script>
+  <script src="js/custom.js"></script>
+  <script src="js/newcustom.js"></script>
+  <script src="js/jquery-3.6.0.js"></script>
+  <script src="js/select2-4.0.13.min.js"></script><!-- 在HTML中确保已引入html2canvas -->
+  <script src="js/html2canvas.min.js"></script>
+  <script>
+    // 修改Swiper配置
+    const swiper = new Swiper('.swiper-container', {
+      effect: 'coverflow',
+      slidesPerView: 3,
+      centeredSlides: true,
+      direction: 'horizontal',
+      loop: true,
+      autoplay: {
+        delay: 3000,
+        disableOnInteraction: false,
+      },
+      scrollbar: {
+        el: '.swiper-scrollbar',
+        draggable: true,
+      },
+      breakpoints: {
+        640: { slidesPerView: 1 },
+        768: { slidesPerView: 1 },
+      },
+      // 如果需要分页器
+      pagination: {
+        el: '.swiper-pagination',
+      },
+
+      // 如果需要前进后退按钮
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+
+      // 如果需要滚动条
+      scrollbar: {
+        el: '.swiper-scrollbar',
+      }
+    });
+    var thumbsSwiper = new Swiper('#thumbs', {
+      spaceBetween: 10,
+      slidesPerView: 4,
+      watchSlidesVisibility: true,//防止不可点击
+    })
+    var gallerySwiper = new Swiper('#gallery', {
+      spaceBetween: 10,
+      thumbs: {
+        swiper: thumbsSwiper,
+      }
+    })
+    var cards_swiper = new Swiper('.swiper', {
+      effect: 'cards',
+      cardsEffect: {
+        slideShadows: true,
+        //transformEl:'.text',
+      },
+      autoplay: {
+        delay: 2000,
+        disableOnInteraction: false,
+      },
+    });
+    // 蔬菜轮播图
+    const vegSwiper = new Swiper('.vegetable-swiper', {
+      effect: 'coverflow',
+      grabCursor: true,
+      centeredSlides: true,
+      slidesPerView: 'auto',
+      loop: true,
+      autoplay: {
+        delay: 2500,
+        disableOnInteraction: false,
+      },
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+      coverflowEffect: {
+        rotate: 30,
+        stretch: 0,
+        depth: 100,
+        modifier: 1,
+        slideShadows: true,
+      },
+      breakpoints: {
+        768: {
+          slidesPerView: 2,
+          spaceBetween: 20
+        }
+      }
+    });
+    // 详情页中内容
+    function update(vegData, slide, title) {
+      document.querySelector('.vegetable-title').innerText = vegData.title;
+      document.querySelector('.vegetable-img').src = slide.querySelector('img').src;
+      document.querySelector('.summarize').textContent = vegData.summarize;
+      document.querySelector('.tip-box .highlight').nextSibling.textContent = vegData.attention;
+      const descList = document.querySelector('.desc-list');
+      descList.innerHTML = '';
+
+      //动态生成列表项
+      [vegData.good1, vegData.good2, vegData.good3].forEach((good, i) => {
+        const li = document.createElement('li');
+        li.innerHTML = `<span class="highlight">${good}</span>${vegData[`effect${i + 1}`]}`;
+        descList.appendChild(li);
+      });
+
+      //更新其他数据
+      document.querySelector('.foods').innerHTML = vegData.foods;
+      document.querySelector('.heat').textContent = vegData.heat;
+      document.querySelector('.GI').textContent = vegData.GI;
+      document.querySelector('.quantity').textContent = vegData.quantity;
+
+      //显示详情页
+      document.getElementById('mask').style.display = 'block';
+      document.querySelector('.vegetable-details').style.display = 'block';
+    }
+    const descMap = [
+      {
+        title: "菠菜", summarize: "富含铁元素和维生素K的绿叶蔬菜性味甘寒，止渴润燥，归肺、胃经。具有润燥清热、下气调中、调血之功效。适用于胸膈闷满、脘腹痞塞型糖尿病。",
+        attention: "菠菜含草酸较多，与含钙丰富的食物共烹容易形成草酸钙，不利于人体吸收，烹调时应加以注意。", good1: "增强胰岛素敏感性：", effect1: "菠菜中的铬元素有助于提高胰岛素敏感性，促进葡萄糖的利用，降低血糖。",
+        good2: "降低血脂：", effect2: "菠菜中的膳食纤维能有效降低血液中的胆固醇和甘油三酯，预防糖尿病并发症。", good3: "抗氧化：", effect3: "菠菜中的维生素C、维生素E等抗氧化物质，有助于清除体内自由基，保护胰岛细胞。",
+        foods: `魔芋，又称蒟蒻，含有大量的膳食纤维，被誉为“天然胰岛素”。将菠菜与魔芋搭配，可谓是糖尿病患者的绝佳食疗方案。
+          <br>以下是菠菜搭配魔芋的具体做法：
+          <br>食材准备：新鲜菠菜300克，魔芋100克，蒜末、盐、鸡精适量。
+          <br>制作方法：<br>
+          1、将菠菜洗净，切段；魔芋洗净，切成细丝。<br>
+          2、锅中烧水，放入魔芋丝焯水，捞出备用。<br>
+          3、热锅凉油，放入蒜末爆香，加入菠菜翻炒至变色。<br>
+          4、放入魔芋丝，加入适量盐、鸡精，翻炒均匀即可。`,
+        heat: "23千卡", GI: "15", quantity: "每日150-200g",
+        src: "../imgs/vegetables slider/bocai.png",
+        carbsPer100g: 3.6
+      },
+      {
+        title: "黄瓜",
+        summarize: "含水量高达95%的清爽蔬菜性味甘平，归脾、胃、大肠经。具有清热解渴、利水消肿之功效。特别适合糖尿病伴有肥胖或水肿症状者。",
+        attention: "黄瓜性凉，脾胃虚寒者不宜多食。表面农药残留较多时需充分浸泡清洗。",
+        good1: "抑制糖转化：",
+        effect1: "黄瓜中的丙醇二酸能抑制糖类物质转化为脂肪，有助于控制餐后血糖升高。",
+        good2: "补充矿物质：",
+        effect2: "富含钾元素可调节体内钠钾平衡，预防糖尿病并发高血压。",
+        good3: "膳食纤维：",
+        effect3: "黄瓜皮中的纤维素可延缓葡萄糖吸收，维持血糖平稳。",
+        foods: `木耳富含植物胶质，与黄瓜搭配形成"天然控糖组合"。两者协同作用可显著改善胰岛素抵抗。
+        <br>推荐食谱：黄瓜拌木耳
+        <br>食材准备：黄瓜200克，水发木耳80克，蒜末、香醋、橄榄油适量
+        <br>制作步骤：<br>
+        1、黄瓜拍碎切块，木耳撕成小朵焯水<br>
+        2、蒜末加香醋、橄榄油调成料汁<br>
+        3、食材装盘淋入料汁拌匀即可`,
+        heat: "15千卡",
+        GI: "23",
+        quantity: "每日200-300g",
+        src: "../imgs/vegetables slider/huanggua.png",
+        carbsPer100g: 5.3
+      },
+      {
+        title: "萝卜",
+        summarize: "十字花科根茎类蔬菜性味辛甘凉，归肺、胃经。具有消积滞、化痰热、下气宽中之功效。适合糖尿病伴有消化不良者。",
+        attention: "萝卜行气作用较强，服用中药期间应咨询医师。胃溃疡患者慎食生萝卜。",
+        good1: "调节代谢：",
+        effect1: "含有的芥子油苷可促进新陈代谢，帮助改善胰岛素抵抗。",
+        good2: "稳定血糖：",
+        effect2: "丰富的可溶性纤维形成凝胶延缓糖分吸收速度。",
+        good3: "抗氧化：",
+        effect3: "维生素C和萝卜硫素协同作用清除自由基，保护胰岛β细胞。",
+        foods: `海带富含岩藻多糖，与萝卜搭配形成"代谢加速组合"，特别适合糖尿病合并甲减患者。
+        <br>推荐食谱：萝卜海带汤
+        <br>食材准备：白萝卜300克，干海带20克，姜片、盐适量
+        <br>制作步骤：<br>
+        1、海带泡发切条，萝卜切滚刀块<br>
+        2、冷水下姜片煮沸，放入食材炖煮20分钟<br>
+        3、加盐调味，撒葱花即可食用`,
+        heat: "21千卡",
+        GI: "26",
+        quantity: "每日100-150g",
+        src: "../imgs/vegetables slider/luobo.jpg",
+        carbsPer100g: 4.0
+      },
+      {
+        title: "南瓜",
+        summarize: "橙黄色瓜类蔬菜性味甘温，归脾、胃经。具有补中益气、消炎止痛之功效。适用于糖尿病脾胃虚弱型患者。",
+        attention: "选择老南瓜含糖量较低，嫩南瓜升糖指数较高需控制摄入量。",
+        good1: "铬元素丰富：",
+        effect1: "南瓜是天然铬元素库，能增强胰岛素敏感性。",
+        good2: "果胶调节：",
+        effect2: "果胶物质延缓胃排空速度，平稳餐后血糖曲线。",
+        good3: "护眼作用：",
+        effect3: "β-胡萝卜素预防糖尿病视网膜病变，维护视觉功能。",
+        foods: `小米富含B族维生素，与南瓜搭配形成"黄金控糖粥"，特别适合作为糖尿病早餐。
+        <br>推荐食谱：南瓜小米粥
+        <br>食材准备：老南瓜200克，小米50克，枸杞10粒
+        <br>制作步骤：<br>
+        1、南瓜切块蒸熟压泥，小米浸泡30分钟<br>
+        2、水开下小米煮15分钟，加入南瓜泥<br>
+        3、小火煮10分钟，撒枸杞焖5分钟`,
+        heat: "22千卡",
+        GI: "55（老南瓜）",
+        quantity: "每日80-100g",
+        src: "../imgs/vegetables slider/nangua.jpg",
+        carbsPer100g: 5.3
+      },
+      {
+        title: "藕",
+        summarize: "水生植物根茎性味甘寒，归心、脾、胃经。具有清热生津、凉血散瘀之功效。适合糖尿病阴虚内热体质者。",
+        attention: "藕节部分药效更强，糖尿病患者宜选脆藕而非粉藕。",
+        good1: "调节酸碱：",
+        effect1: "富含单宁酸可改善糖尿病酸中毒倾向。",
+        good2: "补虚止血：",
+        effect2: "维生素K和铁元素预防糖尿病微血管病变出血。",
+        good3: "膳食纤维：",
+        effect3: "黏液蛋白保护胃黏膜，延缓糖分吸收速度。",
+        foods: `排骨提供优质蛋白，与藕搭配形成"营养均衡组合"，适合糖尿病恢复期患者。
+        <br>推荐食谱：莲藕排骨汤
+        <br>食材准备：排骨300克，藕200克，姜片、料酒适量
+        <br>制作步骤：<br>
+        1、排骨焯水去血沫，藕切厚片<br>
+        2、所有食材放入砂锅，加足量清水<br>
+        3、大火烧开转小火炖1.5小时，加盐调味`,
+        heat: "70千卡",
+        GI: "38",
+        quantity: "每日50-80g",
+        src: "../imgs/vegetables slider/ou.jpg",
+        carbsPer100g: 15.2
+      },
+      {
+        title: "芹菜",
+        summarize: "芳香茎叶蔬菜性味甘苦凉，归肝、胃经。具有平肝清热、祛风利湿之功效。适用于糖尿病合并高血压患者。",
+        attention: "芹菜钠含量较高，肾功能不全者需控制摄入量。",
+        good1: "降压作用：",
+        effect1: "芹菜素可扩张血管，改善糖尿病血管并发症。",
+        good2: "调节神经：",
+        effect2: "高含量维生素B族维护神经系统健康。",
+        good3: "促进代谢：",
+        effect3: "膳食纤维与挥发性油脂协同促进糖脂代谢。",
+        foods: `百合滋阴润燥，与芹菜搭配形成"清火降压组合"，适合糖尿病伴失眠患者。
+        <br>推荐食谱：西芹炒百合
+        <br>食材准备：西芹200克，鲜百合50克，腰果20克
+        <br>制作步骤：<br>
+        1、西芹斜切段焯水，百合掰片洗净<br>
+        2、热锅凉油先炒腰果至微黄<br>
+        3、加入西芹百合快速翻炒，盐调味即可`,
+        heat: "14千卡",
+        GI: "15",
+        quantity: "每日100-150g",
+        src: "../imgs/vegetables slider/qincai.jpg",
+        carbsPer100g: 3.0
+      },
+      {
+        title: "洋葱",
+        summarize: "鳞茎类蔬菜性味辛温，归肝、肺经。具有健胃理气、解毒杀虫之功效。适合糖尿病伴有高血脂症患者。",
+        attention: "生洋葱刺激性强，胃病患者建议熟食。切开后需及时烹调避免营养流失。",
+        good1: "降糖活性：",
+        effect1: "含有机硫化合物刺激胰岛素合成与分泌。",
+        good2: "抗凝作用：",
+        effect2: "前列腺素A预防糖尿病血管动脉硬化。",
+        good3: "杀菌消炎：",
+        effect3: "大蒜素增强免疫力，预防糖尿病继发感染。",
+        foods: `牛肉富含锌元素，与洋葱搭配形成"胰岛素激活组合"，适合糖尿病肌少症患者。
+        <br>推荐食谱：洋葱炒牛肉
+        <br>食材准备：牛里脊150克，洋葱200克，黑胡椒适量
+        <br>制作步骤：<br>
+        1、牛肉逆纹切片，用生抽淀粉腌制<br>
+        2、洋葱切条，热锅快炒至透明盛出<br>
+        3、炒熟牛肉后加入洋葱，撒黑胡椒调味`,
+        heat: "39千卡",
+        GI: "30",
+        quantity: "每日50-80g",
+        src: "../imgs/vegetables slider/yangcong.jpg",
+        carbsPer100g: 9.0
+      }
+    ]
+    document.querySelectorAll('.vegetable-swiper .swiper-slide').forEach((slide, index) => {
+      slide.addEventListener('click', () => {
+        const title = slide.querySelector('p').innerText;
+
+        //通过find方法匹配数据
+        const vegData = descMap.find(item => item.title === title);
+
+        if (!vegData) return;
+
+        //更新数据
+        update(vegData, slide, title);
+      });
+    });
+
+    // 关闭功能
+    document.getElementById('mask').addEventListener('click', closeDetails);
+    document.querySelector('.close-btn').addEventListener('click', closeDetails);
+
+    function closeDetails() {
+      document.getElementById('mask').style.display = 'none';
+      document.querySelector('.vegetable-details').style.display = 'none';
+    }
+    // 修改后的搜索功能实现
+    const searchButton = document.querySelector('.search button');
+    const searchInput = document.querySelector('.search input');
+
+    searchButton.addEventListener('click', () => {
+      // 1. 获取输入值并标准化处理
+      const searchText = searchInput.value.trim().toLowerCase();
+
+      if (!searchText) {
+        alert("请输入要查询的蔬菜名称");
+        return;
+      }
+
+      // 2. 模糊搜索逻辑优化
+      const vegData = descMap.find(item =>
+        item.title.toLowerCase().includes(searchText) ||
+        item.title.toLowerCase().startsWith(searchText)
+      );
+
+      if (vegData) {
+        // 3. 更新显示逻辑
+        document.querySelector('.vegetable-title').textContent = vegData.title;
+        document.querySelector('.summarize').textContent = vegData.summarize;
+        document.querySelector('.vegetable-img').src = vegData.src;
+        document.querySelector('.tip-box .highlight').nextSibling.textContent = vegData.attention;
+
+        // 清除旧数据
+        const descList = document.querySelector('.desc-list');
+        descList.innerHTML = '';
+
+        // 动态生成列表项
+        [vegData.good1, vegData.good2, vegData.good3].forEach((good, i) => {
+          const li = document.createElement('li');
+          li.innerHTML = `<span class="highlight">${good}</span>${vegData[`effect${i + 1}`]}`;
+          descList.appendChild(li);
+        });
+
+        // 更新其他数据
+        document.querySelector('.foods').innerHTML = vegData.foods;
+        document.querySelector('.heat').textContent = vegData.heat;
+        document.querySelector('.GI').textContent = vegData.GI;
+        document.querySelector('.quantity').textContent = vegData.quantity;
+
+        // 显示详情页
+        document.getElementById('mask').style.display = 'block';
+        document.querySelector('.vegetable-details').style.display = 'block';
+      } else {
+        alert("未找到相关蔬菜信息");
+      }
+    });
+
+    // 计算函数
+    const food = document.querySelector("#foodsinsert").value
+    function calculateGL() {
+      const weight = parseFloat(document.getElementById('weightInput').value);
+      const foodName = document.getElementById('foodsinsert').value.trim();
+
+      // 输入验证
+      if (!foodName || isNaN(weight) || weight <= 0) {
+        alert("请输入有效的食材名称和重量");
+        return;
+      }
+
+      // 模糊匹配逻辑优化
+      const targetVegetable = descMap.find(v =>
+        v.title.toLowerCase().includes(foodName.toLowerCase()) ||
+        foodName.toLowerCase().includes(v.title.toLowerCase())
+      );
+
+      if (!targetVegetable?.GI || !targetVegetable?.carbsPer100g) {
+        alert('未找到该食材的营养数据');
+        return;
+      }
+
+      // 计算逻辑
+      const carbsTotal = (targetVegetable.carbsPer100g * weight / 100).toFixed(1);
+      const gl = (targetVegetable.GI * carbsTotal / 100).toFixed(1);
+
+      // 更新显示
+      document.getElementById('carbsTotal').textContent = `${carbsTotal}g`;
+      document.getElementById('glValue').textContent = gl;
+
+      // 更新指示器
+      const pointer = document.querySelector('.indicator-pointer');
+      const glValue = parseFloat(gl);
+      let position = 0;
+
+      if (glValue <= 10) position = (glValue / 10) * 33;
+      else if (glValue <= 20) position = 33 + ((glValue - 10) / 10) * 33;
+      else position = Math.min(66 + ((glValue - 20) / 10) * 34, 100);
+
+      pointer.style.left = `${position}%`;
+    }
+    //小球背景
+    // Keyframes
+    // Some random colors
+    const colors = ["#3CC157", "#2AA7FF", "#1B1B1B", "#FCBC0F", "#F85F36"];
+
+    const numBalls = 50;
+    const balls = [];
+
+    for (let i = 0; i < numBalls; i++) {
+      let ball = document.createElement("div");
+      ball.classList.add("ball");
+      ball.style.background = colors[Math.floor(Math.random() * colors.length)];
+      ball.style.left = `${Math.floor(Math.random() * 100)}vw`;
+      ball.style.top = `${Math.floor(Math.random() * 100)}vh`;
+      ball.style.transform = `scale(${Math.random()})`;
+      ball.style.width = `${Math.random()}em`;
+      ball.style.height = ball.style.width;
+
+      balls.push(ball);
+      document.body.append(ball);
+    }
+
+    // Keyframes
+    balls.forEach((el, i, ra) => {
+      let to = {
+        x: Math.random() * (i % 2 === 0 ? -11 : 11),
+        y: Math.random() * 12
+      };
+
+      let anim = el.animate(
+        [
+          { transform: "translate(0, 0)" },
+          { transform: `translate(${to.x}rem, ${to.y}rem)` }
+        ],
+        {
+          duration: (Math.random() + 1) * 2000, // random duration
+          direction: "alternate",
+          fill: "both",
+          iterations: Infinity,
+          easing: "ease-in-out"
+        }
+      );
+    });
+
+    //个人信息部分动画交互功能
+    const slogan = document.querySelector('.slogan');
+    const personalForm = document.querySelector('.personal_form');
+    const personal_name = document.querySelector('.personal_name');
+
+    slogan.addEventListener('click', function (e) {
+      e.preventDefault();
+      personal_name.style.animation = 'slideUp 0.5s ease-in-out forwards';
+      personalForm.style.display = 'block';
+      personalForm.style.animation = 'slideUp2 0.5s ease-in-out forwards';
+    });
+  </script>
+</body>
+
+
+
+</html>

@@ -1,0 +1,10 @@
+   "shipu": {
+    "file_name": "shipu.json"
+    "file_sha1": "cf142a3ef95acaefd9017bf0328df2151e1b5e04"
+    "columns": {
+      "prompt": "instruction" 
+      "query": "input"
+      "response": "output"
+    
+    }
+  },
